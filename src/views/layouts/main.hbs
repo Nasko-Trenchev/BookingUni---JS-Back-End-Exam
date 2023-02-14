@@ -3,35 +3,41 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page - Crypto Web</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <title>BookingUni</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
-    <header class="header">
+
+    <div id="container">
+        {{#if isAuthenticated}}
         <nav>
-            <img src="./static/images/logo.png" class="logo">
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="#">All Crypto</a></li>
-                <li><a href="#">Search</a></li>
-                <li><a href="#">Create Offer</a></li>
-                <li><a href="/login">Login</a></li>
-                <li><a href="/register">Register</a></li>
-                <li><a href="/logout">Logout</a></li>
-            </ul>
+            <div class="left-container">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/create">Add +</a></li>
+                </ul>
+            </div>
+            <div class="right-container">
+                <a href="/profile" class="log-out">{{username}}</a>
+                <a href="/logout" class="log-out">Logout</a>
+            </div>
         </nav>
-    </header>
+        {{else}}
+         <nav>
+         <div class="left-container">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Register</a></li>
+                </ul>
+        </div>
+        </nav>
+        {{/if}}
+       {{{body}}}
 
-    <main>
-        {{{body}}}
-    </main>
-
-    <footer>
-        <p>Back-End 2022</p>
-    </footer>
+        <footer>@SoftUni - JS Back-end - BookingUni 2020</footer>
+    </div>
 
 </body>
 

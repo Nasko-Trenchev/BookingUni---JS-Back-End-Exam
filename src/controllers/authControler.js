@@ -7,9 +7,9 @@ exports.getLogin = (req, res) =>{
 
 exports.postLogin = async (req, res) =>{
 
-    const {email, password} = req.body;
+    const {username, password} = req.body;
     try {
-     const token = await authService.login(email, password);
+     const token = await authService.login(username, password);
      res.cookie('auth', token);
     }
     catch(err) {
@@ -27,10 +27,10 @@ exports.getRegister = (req, res) =>{
 
 exports.postRegister = async (req, res) =>{
 
-    const {username, email, password, repass} = req.body;
+    const {username, email, password, rePassword} = req.body;
 
     try{
-        const token = await authService.register(username, email, password, repass);
+        const token = await authService.register(username, email, password, rePassword);
         res.cookie('auth', token);
     }
     catch(err){
