@@ -19,3 +19,10 @@ exports.postCreatePage = async (req, res) =>{
 
     res.redirect('/');
 }
+
+exports.getDetails = async (req, res) =>{
+
+    const hotel = await hotelService.findHotelById(req.params.id).lean();
+
+    res.render('details', {hotel});
+}

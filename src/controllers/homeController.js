@@ -7,6 +7,5 @@ exports.getHomePage = async (req, res) => {
     allHotels = allHotels.sort(function(a,b) {
         return b.freeRooms - a.freeRooms
      });
-    const isAuth = true;
-    res.render('home', {allHotels, isAuth});
+    res.render('home', {allHotels});
 }

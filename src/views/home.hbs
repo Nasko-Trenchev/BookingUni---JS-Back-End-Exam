@@ -3,7 +3,7 @@
             {{#if allHotels}}
             <div class="added-hotels">
                 {{#each allHotels}}
-                <a href="{{#if isAuthenticated}}/details/:{{_id}}{{else}}/login{{/if}}" class="added-hotel">
+                <a href="/details/{{_id}}" class="added-hotel">
                     <img src="{{imgUrl}}" alt=""
                         class="picture-added-hotel">
                     <h3>{{name}}</h3>
