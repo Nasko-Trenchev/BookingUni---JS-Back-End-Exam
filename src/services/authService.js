@@ -16,8 +16,14 @@ exports.register = async (username, email, password, rePassword) => {
 
         throw "Password missmatch!";
     }
-    await User.create({username, email, password})
-    
+    try{
+        await User.create({username, email, password})
+
+    }
+    catch(err) {
+        const errors = Object.keys(err.errors).map(key => err.errors[key].message)
+        throw `${errors[0]}` 
+    }    
     return this.login(username, password);
 };
 

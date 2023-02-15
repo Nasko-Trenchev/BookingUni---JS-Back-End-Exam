@@ -10,11 +10,15 @@ const userShema = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        match: [/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, "Email should be valid E-Mail"],
+        unique: true
     },
     password: {
         type: String,
-        required: true
+        required: true,
+        match: [/^[\w-]+$/, "Password should be only letters and digits"],
+        minLength: 5
     }
 })
 

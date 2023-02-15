@@ -1,4 +1,18 @@
 
+{{#if error}}
+    <div id="container">
+        <div>
+            <div class="notification loadingBox">
+                Loading …
+            </div>
+            <div class="notification infoBox">
+                <span>Info</span>
+            </div> 
+            <div class="notification errorBox">
+                <span>{{error}}</span>
+            </div>
+        </div> 
+    {{/if}}
         <section id="viewLogin">
             <h2>Login:</h2>
             <form id="formLogin" method="POST">

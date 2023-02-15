@@ -1,4 +1,19 @@
 
+{{#if err}}
+    <div id="container">
+        <div>
+            <div class="notification loadingBox">
+                Loading …
+            </div>
+            <div class="notification infoBox">
+                <span>Info</span>
+            </div> 
+            <div class="notification errorBox">
+                <span>{{err}}</span>
+            </div>
+        </div> 
+    {{/if}}
+
         <section id="viewRegister">
             <h2>Create your account:</h2>
             <form id="formRegister" method="POST">

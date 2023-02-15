@@ -13,9 +13,9 @@ exports.postLogin = async (req, res) =>{
      res.cookie('auth', token);
     }
     catch(err) {
-        //Error handling
-        // const errors = Object.keys(err.errors).map(key => err.errors[key].message)
-        //return res.render('register', {error: errors[0]})
+       
+        const errors = Object.keys(err.errors).map(key => err.errors[key].message)
+        res.render('register', {error: errors[0]})
     }
     res.redirect('/');
 }
@@ -34,8 +34,7 @@ exports.postRegister = async (req, res) =>{
         res.cookie('auth', token);
     }
     catch(err){
-        //Error handling
-        //return res.render('register', {error: err.message})
+        return res.render('register', {err})
     }
 
     res.redirect('/');
