@@ -24,5 +24,38 @@ exports.getDetails = async (req, res) =>{
 
     const hotel = await hotelService.findHotelById(req.params.id).lean();
 
-    res.render('details', {hotel});
+    const bookings = hotel.bookedUsers.some(id => id == req.user._id);
+    const isOwner = hotel.owner == req.user._id;
+
+    res.render('details', {hotel, bookings, isOwner});
+}
+
+exports.bookHotel = async (req, res) =>{
+
+    await hotelService.bookHotel(req.params.id, req.user._id);
+
+    res.redirect(`/details/${req.params.id}`);
+}
+
+exports.deleteHotel = async (req, res) =>{
+
+    await hotelService.deleteHotel(req.params.id);
+
+    res.redirect('/');
+}
+
+exports.getEditPage = async (req, res) =>{
+
+    const hotel = await hotelService.findHotelById(req.params.id).lean();
+
+    res.render('edit', {hotel});
+}
+
+exports.postEditPage = async (req, res) =>{
+
+    const {hotel: name, city, freeRooms, imgUrl} = req.body;
+
+    await hotelService.editHotel(req.params.id, {name, city, freeRooms, imgUrl})
+
+    res.redirect(`/details/${req.params.id}`)
 }

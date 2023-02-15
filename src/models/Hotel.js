@@ -4,19 +4,25 @@ const hotelSchema = new mongoose.Schema({
 
     name: {
         type: String,
-        required: true
+        required: true,
+        minLength: 4,
+        
     },
     city: {
         type: String,
-        required: true
+        required: true,
+        minLength: 3
     },
     imgUrl: {
         type: String,
-        required: true
+        required: true,
+        match: [/^https?:\/\//, "Invalid URL"]
     },
     freeRooms: {
         type: Number,
         required: true,
+        min: 1,
+        max: 100
     },
     bookedUsers: [{
         type: mongoose.Types.ObjectId,

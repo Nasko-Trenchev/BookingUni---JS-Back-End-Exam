@@ -19,6 +19,11 @@ router.get('/create', hotelController.getCreatePage);
 router.post('/create', hotelController.postCreatePage);
 
 router.get('/details/:id', isAuthenticated, hotelController.getDetails);
+
+router.get('/book/:id', isAuthenticated, hotelController.bookHotel);
+router.get('/delete/:id', isAuthenticated, hotelController.deleteHotel);
+router.get('/edit/:id', hotelController.getEditPage);
+router.post('/edit/:id', hotelController.postEditPage);
 //TODO: Routes
 
 module.exports = router;
