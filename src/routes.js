@@ -7,6 +7,7 @@ const hotelController = require('./controllers/hotelController');
 const {isAuthenticated} = require('./middlewares/authMiddleware')
 
 router.get('/', homeController.getHomePage);
+router.get('/profile', isAuthenticated, homeController.getProfilePage)
 
 router.get('/login', authController.getLogin);
 router.post('/login', authController.postLogin);

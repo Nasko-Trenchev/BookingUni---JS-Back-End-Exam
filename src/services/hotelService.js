@@ -16,3 +16,5 @@ exports.bookHotel = async (hotelId, userId) =>{
 exports.deleteHotel = (id) => Hotel.findByIdAndDelete(id);
 
 exports.editHotel = (id, data) => Hotel.findByIdAndUpdate(id, data, {runValidators: true})
+
+exports.findReservation = (id) => Hotel.find({bookedUsers: {$in: [`${id}`]}})

@@ -13,9 +13,7 @@ exports.postLogin = async (req, res) =>{
      res.cookie('auth', token);
     }
     catch(err) {
-       
-        const errors = Object.keys(err.errors).map(key => err.errors[key].message)
-        res.render('register', {error: errors[0]})
+     return res.render('register', {err})
     }
     res.redirect('/');
 }
